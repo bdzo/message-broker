@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "start": "npm run build && node ./lib/index.js",
+    
     "test": "./node_modules/.bin/tap",
     "test:no-coverage": "./node_modules/.bin/tap --no-coverage-report",
     "test:reporter": "./node_modules/.bin/tap --no-coverage-report --reporter=xunit | tee tap_out.xml",
@@ -22,6 +24,7 @@
     "url": "git@github.com:bdzo/message-broker.git"
   },
   "author": "Đorđe Bjelajac <djordje.bjelajac@gmail.com>",
+  "license" : "SEE LICENSE IN LICENSE",
   "dependencies": {
     "amqplib": "0.5.5"
   },
