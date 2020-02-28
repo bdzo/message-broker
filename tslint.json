@@ -1,0 +1,29 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-standard"
+  ],
+  "jsRules": {},
+  "rules": {
+    "indent": [true, "spaces", 2],
+    "semicolon": [true, "never"],
+    "quotemark": [true, "single"],
+    "no-require-imports": false,
+    "no-var-requires": false,
+    "trailing-comma": [
+      false,
+      {"multiline": "never", "singleline": "never"}
+    ],
+    "space-before-function-paren": [true, "never"],
+    "space-within-parens": [true, 1],
+    "no-multi-spaces": [
+      "error", { 
+        "exceptions": {
+          "ImportDeclaration": true,
+          "VariableDeclarator": true
+        }
+      }
+    ]
+  },
+  "rulesDirectory": []
+}

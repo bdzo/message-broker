@@ -1,0 +1,39 @@
+{
+  "name": "@bdzo/message-broker",
+  "version": "0.0.1",
+  "description": "Advanced Message Queuing Protocol (AMQP) wrapper library.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/tap",
+    "test:no-coverage": "./node_modules/.bin/tap --no-coverage-report",
+    "test:reporter": "./node_modules/.bin/tap --no-coverage-report --reporter=xunit | tee tap_out.xml",
+    "build": "./node_modules/.bin/tsc",
+    "format": "./node_modules/.bin/tslint -p tsconfig.json --fix",
+    "lint": "./node_modules/.bin/tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test:no-coverage && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bdzo/message-broker.git"
+  },
+  "author": "Đorđe Bjelajac <djordje.bjelajac@gmail.com>",
+  "dependencies": {
+    "amqplib": "0.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "13.7.7",
+    "@types/amqplib": "0.5.13",
+    "tap": "14.10.6",
+    "typescript": "3.8.2",
+    "tslint": "6.0.0",
+    "tslint-config-standard": "9.0.0"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
