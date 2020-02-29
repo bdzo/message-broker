@@ -23,7 +23,8 @@
           "VariableDeclarator": true
         }
       }
-    ]
+    ],
+    "await-promise": false
   },
   "rulesDirectory": []
 }
