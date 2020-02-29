@@ -7,8 +7,8 @@
   "scripts": {
     "start": "npm run build && node ./lib/index.js",
     "test": "./node_modules/.bin/tap",
-    "test:no-coverage": "./node_modules/.bin/tap --no-coverage-report",
-    "test:reporter": "./node_modules/.bin/tap --no-coverage-report --reporter=xunit | tee tap_out.xml",
+    "test:no-coverage": "./node_modules/.bin/tap --no-coverage-report ./test/unit",
+    "test:reporter": "./node_modules/.bin/tap --no-coverage-report --reporter=xunit ./test/unit | tee tap_out.xml",
     "build": "./node_modules/.bin/tsc",
     "format": "./node_modules/.bin/tslint -p tsconfig.json --fix",
     "lint": "./node_modules/.bin/tslint -p tsconfig.json",
