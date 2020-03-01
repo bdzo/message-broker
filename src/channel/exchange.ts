@@ -45,7 +45,7 @@ export class Exchange extends CommonChannel {
   }
 
   async bindQueue( q: Queue, pattern: string ): Promise<Exchange> {
-    // TODO: 
+    // TODO:
     this.q = q
     await this.ch.bindQueue( q.q.queue, this.name, pattern )
 
