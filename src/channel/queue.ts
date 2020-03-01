@@ -7,31 +7,32 @@ import { CommonChannel
        , MessageCallback } from './channel'
 import { Message } from '../message'
 
-export type Options = { exclusive?: boolean
-                      , durable?: boolean
-                      , autoDelete?: boolean
-                      , arguments?: object
-                      , messageTtl?: number
-                      , expires?: number
-                      , deadLetterExchange?: string
-                      , maxLength?: number
-                      , prefetch?: number
-                      , noCreate?: boolean }
+export type QueueOptions = { exclusive?: boolean
+                           , durable?: boolean
+                           , autoDelete?: boolean
+                           , arguments?: object
+                           , messageTtl?: number
+                           , expires?: number
+                           , deadLetterExchange?: string
+                           , maxLength?: number
+                           , prefetch?: number
+                           , noCreate?: boolean }
 
 export class Queue extends CommonChannel {
 
   constructor( readonly ch: Channel
+             , readonly q: Replies.AssertQueue
              , readonly name: string
-             , readonly options: Options ) { super() }
+             , readonly options: QueueOptions ) { super() }
 
   static async assert( conn: Connection
                      , name: string
-                     , options: Options ): Promise<Queue> {
+                     , options: QueueOptions ): Promise<Queue> {
 
     const ch = await conn.createChannel()
-    await ch.assertQueue( name, options )
+    const q = await ch.assertQueue( name, options )
 
-    return new Queue( ch, name, options )
+    return new Queue( ch, q, name, options )
   }
 
   async consume( cb: MessageCallback
@@ -42,4 +43,5 @@ export class Queue extends CommonChannel {
   async publish( m: Message ): Promise<void> {
     await this.ch.sendToQueue( this.name, m.content, m.properties )
   }
+
 }

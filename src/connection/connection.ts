@@ -1,7 +1,9 @@
 import { connect
        , Connection as Conn } from 'amqplib'
 import { Queue
-       , Options as QueueOptions } from '../channel'
+       , QueueOptions
+       , Exchange
+       , ExchangeOptions } from '../channel'
 
 export class Connection {
 
@@ -18,5 +20,9 @@ export class Connection {
 
   async declareQueue( name: string, options?: QueueOptions ): Promise<Queue> {
     return Queue.assert( this.conn, name, options )
+  }
+
+  async declareExchange( name: string, type: string, options?: ExchangeOptions ): Promise<Exchange> {
+    return Exchange.assert( this.conn, name, type, options )
   }
 }

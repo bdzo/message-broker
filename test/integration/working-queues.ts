@@ -8,7 +8,7 @@ import { Message } from '../../src/message'
 tap.test( 'hello world', async ( t: any ) => {
   t.plan( 9 )
 
-  const queue = 'simo.simic.quic'
+  const queue = 'hello.world'
   const msg = JSON.stringify( { hello: `world.${Date.now()}` } )
 
   // PUBLISH
@@ -21,9 +21,7 @@ tap.test( 'hello world', async ( t: any ) => {
   await ch1.assertQueue( queue, { durable: false } )
   t.pass( 'queue asserted' )
 
-  await ch1.consume( queue
-                   , ( _: any ) => t.pass( 'message received' )
-                   , { noAck: true } )
+  ch1.consume( queue, ( _: any ) => t.pass( 'message received' ), { noAck: true } )
   t.pass( 'consumer setup' )
 
   // PUBLISH
@@ -52,9 +50,9 @@ tap.test( 'working queues', async ( t:any ) => {
   t.plan( 9 )
 
   const msg = { hello: `world.${Date.now()}` }
-  const queue = 'simo.simic.qui2'
+  const queue = 'working.queues'
 
-  // PUBLISH
+  // CONSUME
   const conn1 = await Connection.connect( process.env.QUEUE_URL )
   t.pass( 'connection 1 established' )
 
@@ -66,8 +64,7 @@ tap.test( 'working queues', async ( t:any ) => {
   // await q1.ch.consume( queue
   //                    ,  ( msg: any ) => { t.pass( 'message received' ); console.log( msg ) }
   //                     , { noAck: true } )
-  await q1.consume( ( _: any ) => t.pass( 'message received' )
-                  , { noAck: true } )
+  q1.consume( ( _: any ) => t.pass( 'message received' ), { noAck: true } )
   t.pass( 'consumer setup' )
 
   // PUBLISH
