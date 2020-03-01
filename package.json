@@ -20,10 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bdzo/message-broker.git"
+    "url": "git+ssh://git@github.com/bdzo/message-broker.git"
   },
   "author": "Đorđe Bjelajac <djordje.bjelajac@gmail.com>",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "GPL-3.0",
   "dependencies": {
     "amqplib": "0.5.5"
   },
@@ -37,5 +37,13 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/bdzo/message-broker/issues"
+  },
+  "homepage": "https://github.com/bdzo/message-broker#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
