@@ -1,3 +1,3 @@
-export * from 'channel'
-export * from 'connection'
-export * from 'message'
+export * from './channel'
+export * from './connection'
+export * from './message'
