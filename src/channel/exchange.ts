@@ -40,7 +40,7 @@ export class Exchange extends CommonChannel {
     return this.ch.consume( this.q.q.queue, consumeMsg( cb ), options )
   }
 
-  async publish( m: Message, routingKey: string ): Promise<void> {
+  async publish<T>( m: Message<T>, routingKey: string ): Promise<void> {
     await this.ch.publish( this.name, routingKey, m.content, m.properties )
   }
 

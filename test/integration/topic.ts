@@ -77,7 +77,7 @@ tap.test( 'topic log custom', async ( t: any ) => {
 
   t.test( 'consumer test', ( t: any ) => {
     t.plan( 1 )
-    e1.consume( ( m: Message ) => t.pass( 'message received' ), { noAck: true } )
+    e1.consume( ( _: any ) => t.pass( 'message received' ), { noAck: true } )
   } )
 
   // PUBLISH

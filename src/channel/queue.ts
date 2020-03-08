@@ -40,7 +40,7 @@ export class Queue extends CommonChannel {
     return this.ch.consume( this.name, consumeMsg( cb ), options )
   }
 
-  async publish( m: Message ): Promise<void> {
+  async publish<T>( m: Message<T> ): Promise<void> {
     await this.ch.sendToQueue( this.name, m.content, m.properties )
   }
 
