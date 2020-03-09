@@ -7,7 +7,7 @@ export abstract class CommonChannel {
   abstract consume( cb: MessageCallback, options: any ): void
 }
 
-export type MessageCallback = <T>( m: Message<T> ) => void
+export type MessageCallback = <T>( m: Message<T> ) => Promise<void>
 
 export const consumeMsg = ( cb: MessageCallback ) =>
                           ( m: Msg ) => cb( ( Message.fromMsg( m ) ) )
