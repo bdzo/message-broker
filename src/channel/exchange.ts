@@ -41,14 +41,14 @@ export class Exchange extends CommonChannel {
                , routingKey?: string ): Promise<Replies.Consume> {
 
     await this.ch.bindQueue( this.q.queue, this.name, routingKey )
-    
+
     return this.ch.consume( this.q.queue
                           , consumeWithAckCb( this.ch, { routingKey, cb } )
                           , options )
   }
 
   consumers( cs: Consumer[]
-           , options:AmqpOptions.Consume ): void {
+           , options: AmqpOptions.Consume ): void {
     cs.forEach( forConsumer( this.ch, this.q, options, this.name ) )
   }
 
@@ -61,7 +61,7 @@ const forConsumer = ( ch: Channel
                     , q: Replies.AssertQueue
                     , options: AmqpOptions.Consume
                     , exchange: string ) =>
-                    ( c:Consumer ) => 
+                    ( c: Consumer ) =>
                      ch.bindQueue( q.queue, exchange, c.routingKey )
                        .then( initConsumer( ch, q, options, c ) )
 
